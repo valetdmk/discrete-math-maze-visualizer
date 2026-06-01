@@ -5,7 +5,7 @@
 Колеватов Г.А - BE ( и чуть чуть FE, по работе с canvas ) 
 Качура К.М - FE
 
-Посмотреть работу можно здесь: https://valetdmk.github.io/maze_visualizer/
+Посмотреть работу можно здесь: https://oiwiio.github.io/maze_visualizer/
 ## Запуск
 
 Открыть файл `maze_visualizer.html` в браузере — никаких зависимостей и сервера не требуется.

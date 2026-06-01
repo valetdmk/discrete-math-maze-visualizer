@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Визуализатор лабиринта — DFS + BFS</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header>
+  <h1>Визуализатор лабиринта</h1>
+  <p>Генерация: DFS (recursive backtracking) · Поиск пути: BFS</p>
+</header>
+
+<div class="main">
+  <aside class="sidebar">
+
+    <div class="control-group">
+      <div class="control-label">Размер сетки</div>
+      <div class="slider-row">
+        <input type="range" id="grid-size" min="5" max="31" value="15" step="2">
+        <span class="slider-val" id="grid-size-val">15×15</span>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">Скорость анимации</div>
+      <div class="slider-row">
+        <input type="range" id="anim-speed" min="1" max="5" value="3" step="1">
+        <span class="slider-val" id="anim-speed-val">×3</span>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <button class="primary" id="btn-generate" onclick="generateMaze()">
+        ⬡ Сгенерировать лабиринт
+      </button>
+      <button class="success" id="btn-bfs" onclick="startBFS()" disabled>
+        ◎ Найти путь (BFS)
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-group">
+      <div class="control-label">Экспорт</div>
+      <button class="export-btn" id="btn-export" onclick="exportJSON()" disabled>
+        ↓ Экспорт шагов BFS (JSON)
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-group">
+      <div class="control-label">Легенда</div>
+      <div class="legend">
+        <div class="legend-row"><span class="legend-dot" style="background:#1e1e2a;border:0.5px solid #333"></span>Стена</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#2a2a38"></span>Проход</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#34d399"></span>Старт</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#f87171"></span>Финиш</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#2d2a4a"></span>Посещено (BFS)</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#6c63ff"></span>Кратчайший путь</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-group">
+      <div class="control-label">Статистика</div>
+      <div class="stats">
+        <div class="stat-row"><span>Размер</span><span class="stat-val" id="s-size">—</span></div>
+        <div class="stat-row"><span>Посещено клеток</span><span class="stat-val" id="s-visited">—</span></div>
+        <div class="stat-row"><span>Длина пути</span><span class="stat-val" id="s-path">—</span></div>
+        <div class="stat-row"><span>Шагов BFS</span><span class="stat-val" id="s-steps">—</span></div>
+      </div>
+    </div>
+
+  </aside>
+
+  <div class="canvas-area">
+    <canvas id="maze-canvas"></canvas>
+  </div>
+</div>
+
+<div class="status-bar">
+  <div class="status-dot" id="status-dot"></div>
+  <span id="status-text">Нажмите «Сгенерировать лабиринт» для начала</span>
+</div>
+<script src="./script.js"></script>
+</body>
+</html>
